@@ -7,6 +7,7 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.js',
+                './vendor/rappasoft/laravel-livewire-tables/resources/views/**/*.blade.php',
             ],
             refresh: true,
         }),

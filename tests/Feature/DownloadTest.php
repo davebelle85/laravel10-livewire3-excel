@@ -2,27 +2,21 @@
 
 namespace Tests\Feature;
 
-use App\Livewire\HistoryTable;
-use App\Livewire\TodoTable;
-use App\Models\Todo;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use App\Livewire\UsersTable;
+use App\Models\User;
 use Livewire\Livewire;
 use Tests\TestCase;
 
 class DownloadTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     */
     public function test_we_can_export_todos(): void
     {
-        Todo::factory()->count(10)->create();
+        User::factory()->count(10)->create();
 
-        $component = Livewire::test(TodoTable::class)
+        $component = Livewire::test(UsersTable::class)
             ->set('selectAll', true)
             ->call('export');
         $component->assertOk();
-        $component->assertFileDownloaded('todos.xlsx');
+        $component->assertFileDownloaded('users.xlsx');
     }
 }

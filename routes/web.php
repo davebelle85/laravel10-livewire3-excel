@@ -1,7 +1,9 @@
 <?php
 
+use App\Exports\UsersExport;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Facades\Excel;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +30,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
-Route::get('/download', function () {
-    return \Maatwebsite\Excel\Facades\Excel::download(new \App\Exports\TodosExport, 'todos.xlsx');
+Route::get('/download1',function(){
+    return Excel::download(new UsersExport, 'users.xlsx');
 });
+
+
+
+
+
 
 require __DIR__.'/auth.php';

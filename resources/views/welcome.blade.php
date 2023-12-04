@@ -1,9 +1,8 @@
 <x-guest-layout>
-    <div>
-        <a href="/download" class="text-blue-500 underline">Download export without livewire (works)</a>
-    </div>
-    <div>
-        <livewire:todo-table></livewire:todo-table>
-    </div>
 
+        <div class="m-2 p-4">
+            <a class="p-4 text-blue-500 underline" href="/download1">Download through controller - works</a>
+        </div>
+
+    <livewire:users-table></livewire:users-table>
 </x-guest-layout>

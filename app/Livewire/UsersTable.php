@@ -2,15 +2,15 @@
 
 namespace App\Livewire;
 
-use App\Exports\TodosExport;
+use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
-use App\Models\Todo;
+use App\Models\User;
 
-class TodoTable extends DataTableComponent
+class UsersTable extends DataTableComponent
 {
-    protected $model = Todo::class;
+    protected $model = User::class;
 
     public function configure(): void
     {
@@ -22,9 +22,9 @@ class TodoTable extends DataTableComponent
         return [
             Column::make("Id", "id")
                 ->sortable(),
-            Column::make("Title", "title")
+            Column::make("Name", "name")
                 ->sortable(),
-            Column::make("Description", "description")
+            Column::make("Email", "email")
                 ->sortable(),
             Column::make("Created at", "created_at")
                 ->sortable(),
@@ -42,10 +42,10 @@ class TodoTable extends DataTableComponent
 
     public function export()
     {
-        $todos = $this->getSelected();
+        $users = $this->getSelected();
 
         $this->clearSelected();
 
-        return Excel::download(new TodosExport($todos), 'todos.xlsx');
+        return Excel::download(new UsersExport($users), 'users.xlsx');
     }
 }
